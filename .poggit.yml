@@ -5,4 +5,7 @@ projects:
    UltraCapes:
       path: ""
       icon: "UltraCapes.png"
+      libs:
+            - src: jojoe77777/FormAPI/libFormAPI
+              version: ^1.3
 ...
