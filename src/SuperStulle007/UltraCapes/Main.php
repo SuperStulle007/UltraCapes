@@ -158,7 +158,7 @@ class Main extends PluginBase implements Listener {
         $form->setTitle("§bUltraCapes Menu");
         $form->setContent("§f>> Here you can choose a Cape!");
         $form->addButton("§4Abort", 0);
-        $form->addButton("§0Remove a Cape", 1);
+        $form->addButton("§0Remove your Cape", 1);
         $form->addButton("§eBlue-Creeper-Cape", 2);
         $form->addButton("§eEndermancape", 3);
         $form->addButton("§eEnergycape", 4);
@@ -271,7 +271,7 @@ class Main extends PluginBase implements Listener {
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                 $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aPicka Cape activated!");
+                $player->sendMessage("§f[§bServer§f] §aPickaxe Cape activated!");
                             return true;
                             }
                         case "firework":
