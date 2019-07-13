@@ -23,7 +23,7 @@ use pocketmine\event\Listener;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\StringTag;
 use pocketmine\Player;
-use jojoe77777\FormAPI\SimpleForm;
+use libs/jojoe77777\FormAPI\SimpleForm;
 use pocketmine\Server;
 use pocketmine\utils\Config;
 use pocketmine\event\player\{
