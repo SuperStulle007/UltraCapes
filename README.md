@@ -14,6 +14,8 @@ You can choose a Cape by using the command /cape. Then an UI with the Capes you 
 
 # TO DO:
 
+• Adding more Capes
+
 • Adding Pictures to the UI
 
 • Adding/Configureable Capes
