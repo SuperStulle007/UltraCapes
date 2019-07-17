@@ -43,6 +43,9 @@ permissions:
       firework.cape:
         description: Firework Cape Perm.
         default: op
+      iron_golem.cape:
+        description: Iron-Golem Cape Perm.
+        default: op
         
 #########################################################
 # Copyright (c) 2019 SuperStulle007
