@@ -153,6 +153,10 @@ class Main extends PluginBase implements Listener {
                     $command = "cape firework";
 								$this->getServer()->getCommandMap()->dispatch($player, $command);
                         break;
+                                  case 10:
+                    $command = "cape iron_golem";
+								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                        break;
              }
              });
         $form->setTitle("§bUltraCapes Menu");
@@ -167,6 +171,7 @@ class Main extends PluginBase implements Listener {
         $form->addButton("§eTurtlecape", 7);
         $form->addButton("§ePickaxecape", 8);
         $form->addButton("§eFireworkcape", 9);
+        $form->addButton("§eIron-Golem-Cape", 10);
         $form->sendToPlayer($player);
         }
         return true;
@@ -285,6 +290,19 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aFirework Cape activated!");
+                            return true;
+                            }
+                       case "iron_golem":
+                            if (!$player->hasPermission("iron_golem.cape")) {
+                                $player->sendMessage($this->noperm);
+                                return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Iron_Golem");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aIron-Golem Cape activated!");
                             return true;
                             }
   }
