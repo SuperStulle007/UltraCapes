@@ -53,6 +53,8 @@ description: Pickaxe Cape Permission
 • firework.cape:
 description: Firework Cape Permission
 
+• iron_golem.cape:
+description: Iron-Golem Cape Permission
 
 Have fun with this plugin on your Server!
  
@@ -60,4 +62,4 @@ Have fun with this plugin on your Server!
 
 
 • If you have problems open an Issue or contact me on Discord:
-  @->("SυρҽɾSƚυʅʅҽ007")#4539 
+  @SuperStulle007#4539 
