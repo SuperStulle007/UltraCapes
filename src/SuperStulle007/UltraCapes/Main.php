@@ -54,11 +54,6 @@ class Main extends PluginBase implements Listener {
 		$this->skin[$player->getName()] = $player->getSkin();
 	}
 
-	public function onQuit(PlayerQuitEvent $eve) {
-		$player = $eve->getPlayer();
-		unset($this->skin[$player->getName()]);
-	}
-
 	public function onChangeSkin(PlayerChangeSkinEvent $eve) {
 		$player = $eve->getPlayer();
 		$this->skin[$player->getName()] = $player->getSkin();
