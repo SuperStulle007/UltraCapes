@@ -3,3 +3,7 @@
 # Here you can set the Message which will be sent to a player without permissions.
 
 no-permissions: §cYou don't have Permissions for this action!
+
+# Here you can set the Message which will be sent to the player after a skin reset.
+
+skin-resetted: §aYour Skin has been resetted!
