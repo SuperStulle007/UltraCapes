@@ -1,0 +1,5 @@
+#UltraCapes Configuration:
+
+# Here you can set the Message which will be sent to a player without permissions.
+
+no-permissions: §cYou don't have Permissions for this action!
