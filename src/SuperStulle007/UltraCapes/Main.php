@@ -92,7 +92,6 @@ class Main extends PluginBase implements Listener {
         $cape = $this->capes->get("capes");
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $noperms = $this->cfg->get("no-permissions");
-        $resetted = this->cfg->get("skin-resetted");
         switch (strtolower($command->getName())) {
             case "cape":
                 if ($player instanceof Player) {
@@ -113,7 +112,7 @@ class Main extends PluginBase implements Listener {
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), "", $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
         $player->sendSkin();
-                            $player->sendMessage($resetted);
+                            $player->sendMessage($this->cfg->get("skin-resetted"));
                             return true;
 						           case 2:
                             if (!$player->hasPermission("blue_creeper.cape")) {
