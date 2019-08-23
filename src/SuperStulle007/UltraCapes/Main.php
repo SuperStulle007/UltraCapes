@@ -92,12 +92,13 @@ class Main extends PluginBase implements Listener {
         $cape = $this->capes->get("capes");
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $noperms = $this->cfg->get("no-permissions");
+        $resetted = this->cfg->get("skin-resetted");
         switch (strtolower($command->getName())) {
             case "cape":
                 if ($player instanceof Player) {
                     if (!isset($args[0])) {
                         if (!$player->hasPermission("cape.cmd")) {
-                            $player->sendMessage($this->noperm);
+                            $player->sendMessage($noperms);
                             return true;
                         } else {
             $form = new SimpleForm(function (Player $player, $data) {
@@ -106,48 +107,138 @@ class Main extends PluginBase implements Listener {
             }
             switch ($result) {
                     case 0:
-                        $command = "cape abort";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
                         break;
                     case 1:
-                    $command = "cape remove";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
-						break;
+        $oldSkin = $player->getSkin();
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), "", $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+        $player->sendSkin();
+                            $player->sendMessage($resetted);
+                            return true;
 						           case 2:
-                    $command = "cape blue_creeper";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
-                        break;
+                            if (!$player->hasPermission("blue_creeper.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Blue_Creeper");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aBlue Creeper Cape activated!");
+                         }
+                            return true;
                                    case 3:
-                    $command = "cape enderman";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                                                if (!$player->hasPermission("enderman.cape")) {
+                                $player->sendMessage($noperms);
+                            return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Enderman");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aEnderman Cape activated!");
+                return true;
+                            }
                         break;
                                    case 4:
-                    $command = "cape energy";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                       if (!$player->hasPermission("energy.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                         } else {
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Energy");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aEnergy Cape activated!");
+                return true;
+                         }
                         break;
                    case 5:
-                    $command = "cape fire";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                                                if (!$player->hasPermission("fire.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Fire");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aFire Cape activated!");
+                return true;
+                            }
 						break;
 						           case 6:
-                    $command = "cape red_creeper";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                                             if (!$player->hasPermission("red_creeper.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                            } else {
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Red_Creeper");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aRed Creeper Cape activated!");
+                            return true;
+                            }
                         break;
                                    case 7:
-                    $command = "cape turtle";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                              if (!$player->hasPermission("turtle.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Turtle");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aTurtle Cape activated!");
+                            return true;
+                            }
                         break;
                                    case 8:
-                    $command = "cape pickaxe";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                                           if (!$player->hasPermission("pickaxe.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Pickaxe");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aPickaxe Cape activated!");
+                            return true;
+                            }
                         break;
                                   case 9:
-                    $command = "cape firework";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+                    if (!$player->hasPermission("firework.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Firework");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aFirework Cape activated!");
+                            return true;
+                            }
                         break;
                                   case 10:
-                    $command = "cape iron_golem";
-								$this->getServer()->getCommandMap()->dispatch($player, $command);
+      if (!$player->hasPermission("iron_golem.cape")) {
+                                $player->sendMessage($noperms);
+                                return true;
+                            }else{
+        $oldSkin = $player->getSkin();
+        $capeData = $this->createCape("Iron_Golem");
+        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+        $player->setSkin($setCape);
+                $player->sendSkin();
+                $player->sendMessage("§f[§bServer§f] §aIron-Golem Cape activated!");
+                            return true;
+                            }
                         break;
              }
              });
@@ -168,136 +259,6 @@ class Main extends PluginBase implements Listener {
         }
         return true;
                     }
-                    $arg = array_shift($args);
-                    switch ($arg) {
-                        case "abort":
-                            return true;
-                            break;
-                        case "remove":
-        $oldSkin = $player->getSkin();
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), "", $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-        $player->sendSkin();
-                            $player->sendMessage("§f[§bServer§f] §aSkin resetted!");
-                            return true;
-                        case "blue_creeper":
-                            if (!$player->hasPermission("blue_creeper.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                            }else{
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Blue_Creeper");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aBlue Creeper Cape activated!");
-                         }
-                            return true;
-                        case "enderman":
-                            if (!$player->hasPermission("enderman.cape")) {
-                                $player->sendMessage($noperms);
-                            return true;
-                            }else{
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Enderman");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aEnderman Cape activated!");
-                return true;
-                            }
-                        case "energy":
-                            if (!$player->hasPermission("energy.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                         } else {
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Energy");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aEnergy Cape activated!");
-                return true;
-                         }
-                        case "fire":
-                            if (!$player->hasPermission("fire.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                            }else{
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Fire");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aFire Cape activated!");
-                return true;
-                            }
-                        case "red_creeper":
-                            if (!$player->hasPermission("red_creeper.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                            } else {
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Red_Creeper");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aRed Creeper Cape activated!");
-                            return true;
-                            }
-                            case "turtle":
-                            if (!$player->hasPermission("turtle.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                            }else{
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Turtle");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aTurtle Cape activated!");
-                            return true;
-                            }
-                        case "pickaxe":
-                            if (!$player->hasPermission("pickaxe.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                            }else{
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Pickaxe");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aPickaxe Cape activated!");
-                            return true;
-                            }
-                        case "firework":
-                            if (!$player->hasPermission("firework.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                            }else{
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Firework");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aFirework Cape activated!");
-                            return true;
-                            }
-                       case "iron_golem":
-                            if (!$player->hasPermission("iron_golem.cape")) {
-                                $player->sendMessage($noperms);
-                                return true;
-                            }else{
-        $oldSkin = $player->getSkin();
-        $capeData = $this->createCape("Iron_Golem");
-        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-        $player->setSkin($setCape);
-                $player->sendSkin();
-                $player->sendMessage("§f[§bServer§f] §aIron-Golem Cape activated!");
-                            return true;
-                            }
-  }
         }
         }
   return true;
