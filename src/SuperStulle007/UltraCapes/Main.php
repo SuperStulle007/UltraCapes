@@ -34,17 +34,12 @@ class Main extends PluginBase implements Listener {
 
     protected $skin = [];
     public $skins;
-    /** @var string */
-    public $noperm = C::AQUA . "§f[§bServer§f] §cYou don't have Permissions for this Action!";
-
-    /**
-     * @return void
-     */
 
     public function onEnable() {
         $this->saveResource("capes.yml");
-        $this->cfg = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
-        foreach ($this->cfg->get("capes") as $cape) {
+        $this->saveResource("config.yml");
+        $this->capes = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
+        foreach ($this->capes->get("capes") as $cape) {
             $this->saveResource("$cape.png");
         }
     }
@@ -93,8 +88,10 @@ class Main extends PluginBase implements Listener {
     }
         
     public function onCommand(CommandSender $player, Command $command, string $label, array $args): bool {
-        $this->cfg = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
-        $cape = $this->cfg->get("capes");
+        $this->capes = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
+        $cape = $this->capes->get("capes");
+        $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $noperms = $this->cfg->get("no-permissions");
         switch (strtolower($command->getName())) {
             case "cape":
                 if ($player instanceof Player) {
@@ -185,7 +182,7 @@ class Main extends PluginBase implements Listener {
                             return true;
                         case "blue_creeper":
                             if (!$player->hasPermission("blue_creeper.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                             }else{
         $oldSkin = $player->getSkin();
@@ -198,7 +195,7 @@ class Main extends PluginBase implements Listener {
                             return true;
                         case "enderman":
                             if (!$player->hasPermission("enderman.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                             return true;
                             }else{
         $oldSkin = $player->getSkin();
@@ -211,7 +208,7 @@ class Main extends PluginBase implements Listener {
                             }
                         case "energy":
                             if (!$player->hasPermission("energy.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                          } else {
         $oldSkin = $player->getSkin();
@@ -224,7 +221,7 @@ class Main extends PluginBase implements Listener {
                          }
                         case "fire":
                             if (!$player->hasPermission("fire.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                             }else{
         $oldSkin = $player->getSkin();
@@ -237,7 +234,7 @@ class Main extends PluginBase implements Listener {
                             }
                         case "red_creeper":
                             if (!$player->hasPermission("red_creeper.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                             } else {
         $oldSkin = $player->getSkin();
@@ -250,7 +247,7 @@ class Main extends PluginBase implements Listener {
                             }
                             case "turtle":
                             if (!$player->hasPermission("turtle.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                             }else{
         $oldSkin = $player->getSkin();
@@ -263,7 +260,7 @@ class Main extends PluginBase implements Listener {
                             }
                         case "pickaxe":
                             if (!$player->hasPermission("pickaxe.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                             }else{
         $oldSkin = $player->getSkin();
@@ -276,7 +273,7 @@ class Main extends PluginBase implements Listener {
                             }
                         case "firework":
                             if (!$player->hasPermission("firework.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                             }else{
         $oldSkin = $player->getSkin();
@@ -289,7 +286,7 @@ class Main extends PluginBase implements Listener {
                             }
                        case "iron_golem":
                             if (!$player->hasPermission("iron_golem.cape")) {
-                                $player->sendMessage($this->noperm);
+                                $player->sendMessage($noperms);
                                 return true;
                             }else{
         $oldSkin = $player->getSkin();
