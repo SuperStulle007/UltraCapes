@@ -20,8 +20,6 @@ use pocketmine\command\{
 	Command, CommandSender
 };
 use pocketmine\event\Listener;
-use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\nbt\tag\StringTag;
 use pocketmine\Player;
 use SuperStulle007\UltraCapes\libs\jojoe77777\FormAPI\SimpleForm;
 use pocketmine\Server;
@@ -162,7 +160,6 @@ class Main extends PluginBase implements Listener {
         
     public function onCommand(CommandSender $player, Command $command, string $label, array $args): bool {
         $this->capes = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
-        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
         $cape = $this->capes->get("capes");
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $noperms = $this->cfg->get("no-permissions");
@@ -182,6 +179,7 @@ class Main extends PluginBase implements Listener {
                     case 0:
                         break;
                     case 1:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
         $oldSkin = $player->getSkin();
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), "", $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
@@ -192,6 +190,7 @@ class Main extends PluginBase implements Listener {
       
                             return true;
 						           case 2:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                             if (!$player->hasPermission("blue_creeper.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
@@ -207,6 +206,7 @@ class Main extends PluginBase implements Listener {
                          }
                             return true;
                                    case 3:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                                                 if (!$player->hasPermission("enderman.cape")) {
                                 $player->sendMessage($noperms);
                             return true;
@@ -223,6 +223,7 @@ class Main extends PluginBase implements Listener {
                             }
                         break;
                                    case 4:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                        if (!$player->hasPermission("energy.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
@@ -239,6 +240,7 @@ class Main extends PluginBase implements Listener {
                          }
                         break;
                    case 5:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                                                 if (!$player->hasPermission("fire.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
@@ -255,6 +257,7 @@ class Main extends PluginBase implements Listener {
                             }
 						break;
 						           case 6:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                                              if (!$player->hasPermission("red_creeper.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
@@ -271,6 +274,7 @@ class Main extends PluginBase implements Listener {
                             }
                         break;
                                    case 7:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                               if (!$player->hasPermission("turtle.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
@@ -287,6 +291,7 @@ class Main extends PluginBase implements Listener {
                             }
                         break;
                                    case 8:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                                            if (!$player->hasPermission("pickaxe.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
@@ -303,6 +308,7 @@ class Main extends PluginBase implements Listener {
                             }
                         break;
                                   case 9:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                     if (!$player->hasPermission("firework.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
@@ -319,6 +325,7 @@ class Main extends PluginBase implements Listener {
                             }
                         break;
                                   case 10:
+$pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
       if (!$player->hasPermission("iron_golem.cape")) {
                                 $player->sendMessage($noperms);
                                 return true;
