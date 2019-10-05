@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener {
 	public function onJoin(PlayerJoinEvent $eve) {
 		$player = $eve->getPlayer();
 		$this->skin[$player->getName()] = $player->getSkin();
-            $playercape = new Config(this->getDataFolder() . "data.yml", Config::YAML);
+            $playercape = new Config($this->getDataFolder() . "data.yml", Config::YAML);
             if($playercape->get($player->getName()) == "1"){
                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Blue_Creeper");
