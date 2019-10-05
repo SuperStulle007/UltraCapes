@@ -48,63 +48,63 @@ class Main extends PluginBase implements Listener {
 		$player = $eve->getPlayer();
 		$this->skin[$player->getName()] = $player->getSkin();
             $playercape = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-            if($playercape->get($player->getName()) == "1"){
+            if($playercape->get($player->getName()) == "b"){
                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Blue_Creeper");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                 $player->sendSkin();
             }else{
-                            if($playercape->get($player->getName()) == "2"){
+                            if($playercape->get($player->getName()) == "c"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Enderman");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                         $player->sendSkin();
                             }else{
-                            if($playercape->get($player->getName()) == "3"){
+                            if($playercape->get($player->getName()) == "d"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Energy");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                         $player->sendSkin();
                             }else{
-                            if($playercape->get($player->getName()) == "4"){
+                            if($playercape->get($player->getName()) == "e"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Fire");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                         $player->sendSkin();
                             }else{
-                            if($playercape->get($player->getName()) == "5"){
+                            if($playercape->get($player->getName()) == "f"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Red_Creeper");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                         $player->sendSkin();
                             }else{
-                            if($playercape->get($player->getName()) == "6"){
+                            if($playercape->get($player->getName()) == "g"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Turtle");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                         $player->sendSkin();
                             }else{
-                            if($playercape->get($player->getName()) == "7"){
+                            if($playercape->get($player->getName()) == "h"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Pickaxe");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                         $player->sendSkin();
                             }else{
-                            if($playercape->get($player->getName()) == "8"){
+                            if($playercape->get($player->getName()) == "i"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Firework");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
         $player->setSkin($setCape);
                         $player->sendSkin();
                             }else{
-                           if($playercape->get($player->getName()) == "9"){
+                           if($playercape->get($player->getName()) == "j"){
                                         $oldSkin = $player->getSkin();
         $capeData = $this->createCape("Iron_Golem");
         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
@@ -187,7 +187,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
         $player->sendSkin();
                             $player->sendMessage($this->cfg->get("skin-resetted"));
-                    $data->set($player->getName(), "0");
+                    $data->set($player->getName(), "a");
                     $data->save();
       
                             return true;
@@ -202,7 +202,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aBlue Creeper Cape activated!");
-                    $data->set($player->getName(), "1");
+                    $data->set($player->getName(), "b");
                     $data->save();
                          }
                             return true;
@@ -217,7 +217,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aEnderman Cape activated!");
-                    $data->set($player->getName(), "2");
+                    $data->set($player->getName(), "c");
                     $data->save();
                 return true;
                             }
@@ -233,7 +233,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aEnergy Cape activated!");
-                    $data->set($player->getName(), "3");
+                    $data->set($player->getName(), "d");
                     $data->save();
                 return true;
                          }
@@ -249,7 +249,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aFire Cape activated!");
-                    $data->set($player->getName(), "4");
+                    $data->set($player->getName(), "e");
                     $data->save();
                 return true;
                             }
@@ -265,7 +265,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aRed Creeper Cape activated!");
-                    $data->set($player->getName(), "5");
+                    $data->set($player->getName(), "f");
                     $data->save();
                             return true;
                             }
@@ -281,7 +281,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aTurtle Cape activated!");
-                    $data->set($player->getName(), "6");
+                    $data->set($player->getName(), "g");
                     $data->save();
                             return true;
                             }
@@ -297,7 +297,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aPickaxe Cape activated!");
-                    $data->set($player->getName(), "7");
+                    $data->set($player->getName(), "h");
                     $data->save();
                             return true;
                             }
@@ -313,7 +313,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aFirework Cape activated!");
-                    $data->set($player->getName(), "8");
+                    $data->set($player->getName(), "i");
                     $data->save();
                             return true;
                             }
@@ -329,7 +329,7 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aIron-Golem Cape activated!");
-                    $data->set($player->getName(), "9");
+                    $data->set($player->getName(), "j");
                     $data->save();
                             return true;
                             }
