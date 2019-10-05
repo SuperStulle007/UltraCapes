@@ -162,7 +162,7 @@ class Main extends PluginBase implements Listener {
         
     public function onCommand(CommandSender $player, Command $command, string $label, array $args): bool {
         $this->capes = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
-        $data = new Config($this->getDataFolder() . "data.yml", Config::YAML);
+        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
         $cape = $this->capes->get("capes");
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $noperms = $this->cfg->get("no-permissions");
@@ -202,8 +202,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aBlue Creeper Cape activated!");
-                    $data->set($player->getName(), "b");
-                    $data->save();
+                    $pdata->set($player->getName(), "b");
+                    $pdata->save();
                          }
                             return true;
                                    case 3:
@@ -217,8 +217,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aEnderman Cape activated!");
-                    $data->set($player->getName(), "c");
-                    $data->save();
+                    $pdata->set($player->getName(), "c");
+                    $pdata->save();
                 return true;
                             }
                         break;
@@ -233,8 +233,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aEnergy Cape activated!");
-                    $data->set($player->getName(), "d");
-                    $data->save();
+                    $pdata->set($player->getName(), "d");
+                    $pdata->save();
                 return true;
                          }
                         break;
@@ -249,8 +249,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aFire Cape activated!");
-                    $data->set($player->getName(), "e");
-                    $data->save();
+                    $pdata->set($player->getName(), "e");
+                    $pdata->save();
                 return true;
                             }
 						break;
@@ -265,8 +265,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aRed Creeper Cape activated!");
-                    $data->set($player->getName(), "f");
-                    $data->save();
+                    $pdata->set($player->getName(), "f");
+                    $pdata->save();
                             return true;
                             }
                         break;
@@ -281,8 +281,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aTurtle Cape activated!");
-                    $data->set($player->getName(), "g");
-                    $data->save();
+                    $pdata->set($player->getName(), "g");
+                    $pdata->save();
                             return true;
                             }
                         break;
@@ -297,8 +297,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aPickaxe Cape activated!");
-                    $data->set($player->getName(), "h");
-                    $data->save();
+                    $pdata->set($player->getName(), "h");
+                    $pdata->save();
                             return true;
                             }
                         break;
@@ -313,8 +313,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aFirework Cape activated!");
-                    $data->set($player->getName(), "i");
-                    $data->save();
+                    $pdata->set($player->getName(), "i");
+                    $pdata->save();
                             return true;
                             }
                         break;
@@ -329,8 +329,8 @@ class Main extends PluginBase implements Listener {
         $player->setSkin($setCape);
                 $player->sendSkin();
                 $player->sendMessage("§f[§bServer§f] §aIron-Golem Cape activated!");
-                    $data->set($player->getName(), "j");
-                    $data->save();
+                    $pdata->set($player->getName(), "j");
+                    $pdata->save();
                             return true;
                             }
                         break;
