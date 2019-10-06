@@ -34,6 +34,7 @@ class Main extends PluginBase implements Listener {
     public $skins;
 
     public function onEnable() {
+                  $this->getServer()->getPluginManager()->registerEvents($this ,$this);
         $this->saveResource("capes.yml");
         $this->saveResource("config.yml");
         $this->capes = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
