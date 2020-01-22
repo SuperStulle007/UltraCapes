@@ -344,8 +344,8 @@ $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
                         break;
              }
              });
-        $form->setTitle("§bUltraCapes Menu");
-        $form->setContent("§f>> Here you can choose a Cape!");
+        $form->setTitle($this->cfg->get("UI-Title"));
+        $form->setContent($this->cfg->get("UI-Content"));
         $form->addButton("§4Abort", 0);
         $form->addButton("§0Remove your Cape", 1);
         $form->addButton("§eBlue-Creeper-Cape", 2);
