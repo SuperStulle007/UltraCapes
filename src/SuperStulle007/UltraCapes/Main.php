@@ -23,8 +23,15 @@ use SuperStulle007\UltraCapes\libs\jojoe77777\FormAPI\SimpleForm;
 class Main extends PluginBase implements Listener
 {
 
-    public $skins;
     protected $skin = [];
+    /**
+     * @var Config
+     */
+    private $capes;
+    /**
+     * @var Config
+     */
+    private $cfg;
 
     public function onEnable()
     {
