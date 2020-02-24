@@ -1,13 +1,13 @@
 ---
 # Don't Change anything here!
 capes:
-- Blue_Creeper
-- Enderman
-- Energy
-- Fire
-- Red_Creeper
-- Turtle
-- Pickaxe
-- Firework
-- Iron_Golem
+  - Blue_Creeper
+  - Enderman
+  - Energy
+  - Fire
+  - Red_Creeper
+  - Turtle
+  - Pickaxe
+  - Firework
+  - Iron_Golem
 ...
