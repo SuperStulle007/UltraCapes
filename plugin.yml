@@ -1,8 +1,8 @@
 ---
 name: UltraCapes
 author: SuperStulle007
-version: 1.7.0
-description: Plugin which let you choose Capes on your PmmP Server!
+version: 1.7.5
+description: Let you wear Capes on your PmmP-Server
 main: SuperStulle007\UltraCapes\Main
 api: 3.0.0
 
