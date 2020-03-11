@@ -191,8 +191,8 @@ class Main extends PluginBase implements Listener
                                         $player->setSkin($setCape);
                                         $player->sendSkin();
                                         $player->sendMessage($this->cfg->get("skin-resetted"));
-                                        $data->set($player->getName(), "a");
-                                        $data->save();
+                                        $pdata->set($player->getName(), "a");
+                                        $pdata->save();
 
                                         return true;
                                     case 2:
