@@ -20,354 +20,166 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use SuperStulle007\UltraCapes\libs\jojoe77777\FormAPI\SimpleForm;
 
-class Main extends PluginBase implements Listener
-{
+class Main extends PluginBase implements Listener {
 
     protected $skin = [];
-    /**
-     * @var Config
-     */
-    private $capes;
-    /**
-     * @var Config
-     */
-    private $cfg;
-
-    public function onEnable()
-    {
+    
+    public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->saveResource("capes.yml");
         $this->saveResource("config.yml");
-        $this->capes = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
-        foreach ($this->capes->get("capes") as $cape) {
+        $capes = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        if(is_array($capes->get("standard_capes"))) {
+            foreach($capes->get("standard_capes") as $cape){
             $this->saveResource("$cape.png");
         }
+        $capes->set("standard_capes", "done");
+        $capes->save();
+    }
     }
 
-    public function onJoin(PlayerJoinEvent $eve)
-    {
-        $player = $eve->getPlayer();
+    public function onJoin(PlayerJoinEvent $event) {
+        $player = $event->getPlayer();
         $this->skin[$player->getName()] = $player->getSkin();
         $playercape = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-        if ($playercape->get($player->getName()) == "b") {
+        if(file_exists($this->getDataFolder() . $playercape->get($player->getName()) . ".png")){
             $oldSkin = $player->getSkin();
-            $capeData = $this->createCape("Blue_Creeper");
+            $capeData = $this->createCape($playercape->get($player->getName()));
             $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
             $player->setSkin($setCape);
             $player->sendSkin();
-        } else {
-            if ($playercape->get($player->getName()) == "c") {
-                $oldSkin = $player->getSkin();
-                $capeData = $this->createCape("Enderman");
-                $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                $player->setSkin($setCape);
-                $player->sendSkin();
-            } else {
-                if ($playercape->get($player->getName()) == "d") {
-                    $oldSkin = $player->getSkin();
-                    $capeData = $this->createCape("Energy");
-                    $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                    $player->setSkin($setCape);
-                    $player->sendSkin();
-                } else {
-                    if ($playercape->get($player->getName()) == "e") {
-                        $oldSkin = $player->getSkin();
-                        $capeData = $this->createCape("Fire");
-                        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                        $player->setSkin($setCape);
-                        $player->sendSkin();
-                    } else {
-                        if ($playercape->get($player->getName()) == "f") {
-                            $oldSkin = $player->getSkin();
-                            $capeData = $this->createCape("Red_Creeper");
-                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                            $player->setSkin($setCape);
-                            $player->sendSkin();
-                        } else {
-                            if ($playercape->get($player->getName()) == "g") {
-                                $oldSkin = $player->getSkin();
-                                $capeData = $this->createCape("Turtle");
-                                $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                $player->setSkin($setCape);
-                                $player->sendSkin();
-                            } else {
-                                if ($playercape->get($player->getName()) == "h") {
-                                    $oldSkin = $player->getSkin();
-                                    $capeData = $this->createCape("Pickaxe");
-                                    $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                    $player->setSkin($setCape);
-                                    $player->sendSkin();
-                                } else {
-                                    if ($playercape->get($player->getName()) == "i") {
-                                        $oldSkin = $player->getSkin();
-                                        $capeData = $this->createCape("Firework");
-                                        $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                        $player->setSkin($setCape);
-                                        $player->sendSkin();
-                                    } else {
-                                        if ($playercape->get($player->getName()) == "j") {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Iron_Golem");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                        } else {
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        }else{
+            $playercape->remove($player->getName());
+            $playercape->save();
+    }
     }
 
-    public function createCape($capeName)
-    {
+    public function createCape($capeName){
+        
         $path = $this->getDataFolder() . "{$capeName}.png";
-
         $img = @imagecreatefrompng($path);
-
         $bytes = '';
-
         $l = (int)@getimagesize($path)[1];
-
         for ($y = 0; $y < $l; $y++) {
-
             for ($x = 0; $x < 64; $x++) {
-
                 $rgba = @imagecolorat($img, $x, $y);
-
                 $a = ((~((int)($rgba >> 24))) << 1) & 0xff;
-
                 $r = ($rgba >> 16) & 0xff;
-
                 $g = ($rgba >> 8) & 0xff;
-
                 $b = $rgba & 0xff;
-
                 $bytes .= chr($r) . chr($g) . chr($b) . chr($a);
-
             }
-
         }
-
         @imagedestroy($img);
         return $bytes;
     }
 
-    public function onChangeSkin(PlayerChangeSkinEvent $eve)
-    {
-        $player = $eve->getPlayer();
+    public function onChangeSkin(PlayerChangeSkinEvent $event){
+        
+        $player = $event->getPlayer();
         $this->skin[$player->getName()] = $player->getSkin();
     }
 
-    public function onCommand(CommandSender $player, Command $command, string $label, array $args): bool
-    {
-        $this->capes = new Config($this->getDataFolder() . "capes.yml", Config::YAML);
-        $cape = $this->capes->get("capes");
-        $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-        $noperms = $this->cfg->get("no-permissions");
-        switch (strtolower($command->getName())) {
-            case "cape":
-                if ($player instanceof Player) {
-                    if (!isset($args[0])) {
+    public function onCommand(CommandSender $player, Command $command, string $label, array $args): bool {
+        
+                        $cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $noperms = $cfg->get("no-permissions");
+        $ingame = $cfg->get("ingame");
+        if($command->getName() == "cape"){
+                if (!$player instanceof Player) {
+                        $player->sendMessage($ingame);
+                }else{
                         if (!$player->hasPermission("cape.cmd")) {
                             $player->sendMessage($noperms);
-                            return true;
                         } else {
-                            $form = new SimpleForm(function (Player $player, $data) {
-                                $result = $data;
-                                if ($result == null) {
-                                }
-                                switch ($result) {
+                            $this->openCapesUI($player);
+                        }
+                }
+        return true;
+        }
+    }
+                            
+    public function openCapesUI($player) {
+                                        $cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $form = new SimpleForm(function (Player $player, $data = null) {
+            $result = $data;
+            if ($result === null) {
+                return true;
+            }
+            switch ($result) {
                                     case 0:
                                         break;
                                     case 1:
                                         $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
+                                        $cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
                                         $oldSkin = $player->getSkin();
                                         $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), "", $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
                                         $player->setSkin($setCape);
                                         $player->sendSkin();
-                                        $player->sendMessage($this->cfg->get("skin-resetted"));
-                                        $pdata->set($player->getName(), "a");
+                                        if($pdata->get($player->getName()) !== null){
+                                        $pdata->remove($player->getName());
                                         $pdata->save();
-
-                                        return true;
-                                    case 2:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("blue_creeper.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Blue_Creeper");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aBlue Creeper Cape activated!");
-                                            $pdata->set($player->getName(), "b");
-                                            $pdata->save();
-                                        }
-                                        return true;
-                                    case 3:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("enderman.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Enderman");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aEnderman Cape activated!");
-                                            $pdata->set($player->getName(), "c");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
-                                    case 4:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("energy.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Energy");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aEnergy Cape activated!");
-                                            $pdata->set($player->getName(), "d");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
-                                    case 5:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("fire.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Fire");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aFire Cape activated!");
-                                            $pdata->set($player->getName(), "e");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
-                                    case 6:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("red_creeper.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Red_Creeper");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aRed Creeper Cape activated!");
-                                            $pdata->set($player->getName(), "f");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
-                                    case 7:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("turtle.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Turtle");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aTurtle Cape activated!");
-                                            $pdata->set($player->getName(), "g");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
-                                    case 8:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("pickaxe.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Pickaxe");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aPickaxe Cape activated!");
-                                            $pdata->set($player->getName(), "h");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
-                                    case 9:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("firework.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Firework");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aFirework Cape activated!");
-                                            $pdata->set($player->getName(), "i");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
-                                    case 10:
-                                        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-                                        if (!$player->hasPermission("iron_golem.cape")) {
-                                            $player->sendMessage($noperms);
-                                            return true;
-                                        } else {
-                                            $oldSkin = $player->getSkin();
-                                            $capeData = $this->createCape("Iron_Golem");
-                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
-                                            $player->setSkin($setCape);
-                                            $player->sendSkin();
-                                            $player->sendMessage("§f[§bServer§f] §aIron-Golem Cape activated!");
-                                            $pdata->set($player->getName(), "j");
-                                            $pdata->save();
-                                            return true;
-                                        }
-                                        break;
+                                }
+                                $player->sendMessage($cfg->get("skin-resetted"));
+                                break;
+                                case 2:
+                                    $this->openCapeListUI($player);
+                                    break;
                                 }
                             });
-                            $form->setTitle($this->cfg->get("UI-Title"));
-                            $form->setContent($this->cfg->get("UI-Content"));
+                            $form->setTitle($cfg->get("UI-Title"));
+                            $form->setContent($cfg->get("UI-Content"));
                             $form->addButton("§4Abort", 0);
                             $form->addButton("§0Remove your Cape", 1);
-                            $form->addButton("§eBlue-Creeper-Cape", 2);
-                            $form->addButton("§eEndermancape", 3);
-                            $form->addButton("§eEnergycape", 4);
-                            $form->addButton("§eFirecape", 5);
-                            $form->addButton("§eRed-Creeper-Cape", 6);
-                            $form->addButton("§eTurtlecape", 7);
-                            $form->addButton("§ePickaxecape", 8);
-                            $form->addButton("§eFireworkcape", 9);
-                            $form->addButton("§eIron-Golem-Cape", 10);
+                            $form->addButton("§eChoose a Cape", 2);
                             $form->sendToPlayer($player);
                         }
-                        return true;
-                    }
-                }
-        }
-        return true;
-    }
+                        
+    public function openCapeListUI($player){
+                                        $cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $form = new SimpleForm(function (Player $player, $data = null) {
+            $result = $data;
+            if ($result === null) {
+                return true;
+            }
+            $cape = $data;
+        $cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $pdata = new Config($this->getDataFolder() . "data.yml", Config::YAML);
+        $noperms = $cfg->get("no-permissions");
+            if(!file_exists($this->getDataFolder() . $data . ".png")) {
+                $player->sendMessage("The choosen Skin is not available!");
+            }else{
+                                        if (!$player->hasPermission("$cape.cape")) {
+                                            $player->sendMessage($noperms);
+                                        } else {
+                                            $oldSkin = $player->getSkin();
+                                            $capeData = $this->createCape($cape);
+                                            $setCape = new Skin($oldSkin->getSkinId(), $oldSkin->getSkinData(), $capeData, $oldSkin->getGeometryName(), $oldSkin->getGeometryData());
+                                            $player->setSkin($setCape);
+                                            $player->sendSkin();
+                                            $msg = $cfg->get("cape-on");
+                            $msg = str_replace("{name}", $cape, $msg);
+                $player->sendMessage($msg);
+                                            $pdata->set($player->getName(), $cape);
+                                            $pdata->save();
+                                        }
+            }
+                            });
+                            $form->setTitle($cfg->get("UI-Title"));
+                            $form->setContent($cfg->get("UI-Content"));
+           foreach($this->getCapes() as $capes){
+            $form->addButton("$capes", -1, "", $capes);
+           }
+                            $form->sendToPlayer($player);
+                        }
+                        
+    public function getCapes(){
+        $list = array();
+                            foreach(array_diff(scandir($this->getDataFolder()), ["..", "."]) as $data){
+                            $dat = explode(".", $data);
+                            if($dat[1] == "png"){
+                                array_push($list, $dat[0]);
+                            }
+                            }
+                            return $list;
+                            }
 }
