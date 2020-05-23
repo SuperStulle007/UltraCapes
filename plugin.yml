@@ -1,8 +1,8 @@
 ---
 name: UltraCapes
 author: SuperStulle007
-version: 1.7.5
-description: Let you wear Capes on your PmmP-Server
+version: 2.0.0
+description: Wear Capes on your PmmP-Server!
 main: SuperStulle007\UltraCapes\Main
 api: 3.0.0
 
@@ -10,42 +10,6 @@ commands:
   cape:
     description: Choose a Cape!
     usage: /cape
-
-permissions:
-  cape.all:
-    description: Allows using every Cape
-    default: op
-    children:
-      cape.cmd:
-        description: Allows opening the Cape UI
-        default: op
-      blue_creeper.cape:
-        description: Blue Creeper Cape Perm.
-        default: op
-      enderman.cape:
-        description: Enderman Cape Perm.
-        default: op
-      energy.cape:
-        description: Energie Cape Perm.
-        default: op
-      fire.cape:
-        description: Fire Cape Perm.
-        default: op
-      red_creeper.cape:
-        description: Red Creeper Cape Perm.
-        default: op
-      turtle.cape:
-        description: Turtle Cape Perm.
-        default: op
-      pickaxe.cape:
-        description: Pickaxe Cape Perm.
-        default: op
-      firework.cape:
-        description: Firework Cape Perm.
-        default: op
-      iron_golem.cape:
-        description: Iron-Golem Cape Perm.
-        default: op
 
 #########################################################
 # Copyright (c) 2019 SuperStulle007
