@@ -1,4 +1,4 @@
-# UltraCapes Configuration-File VER2:
+# UltraCapes Configuration File:
 
 # Here you can set the Message which will be sent to a player without permissions.
 
@@ -8,10 +8,23 @@ no-permissions: §cYou don't have Permissions for this action!
 
 skin-resetted: §aYour Skin has been resetted!
 
+# Here you can set the Message which will be sent when the command has been executed by the console.
+
+ingame: §cRun this Command ingame!
+
+# Here you can set the Message which will be sent when you choose a cape.
+# {name} -> The Name of the Cape
+
+cape-on: §aYou activated the {name}-Cape!
+
 # Here you can set the UI's Title.
 
 UI-Title: §bUltraCapes Menu
 
-#Here you can set the Message under the UI's Title.
+# Here you can set the Message under the UI's Title.
 
 UI-Content: §f§l>> §r§fHere you can choose a Cape!
+
+# Only for Internal Use [Don't Change!]
+
+standard_capes: ["Blue_Creeper", "Enderman", "Energy", "Fire", "Red_Creeper", "Turtle", "Pickaxe", "Firework", "Iron_Golem"]
