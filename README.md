@@ -4,62 +4,43 @@ You can choose a Cape by using the command /cape. Then an UI with the Capes you 
 
 
 # Features:
+
+• Easy Setup!
    
-• Permissions for using all Capes or single Capes!
+• Permissions for using Capes!
    
 • Easy Usage via UI!
   
-• 8 Capes!
+• Add unlimited Capes!
 
+
+# Setup:
+
+Download this Plugin and put it in the plugins folder of your Server.
+
+With the Command /cape you can choose a cape.
+
+To add own Capes just put the .png Picture of the Cape in the plugin_data/UltraCapes/ folder. 
+
+Then the new Capes automatically appear in the UI.
 
 # TO DO:
 
-• Adding more Capes
-
-• (maybe Adding Pictures to the UI)
-
-• Adding/Configureable Capes
+• Nothing to do yet
 
 
 # Permissions:
 
-• cape.all:
-description: Allows using all Capes.
+The permissions for each cape is: {capename}.cape.
 
-• cape.cmd:
-description: Allows opening the UI.
+For example: firework.cape or energy.cape
 
-• blue_creeper.cape:
-description: Blue Creeper Cape Permissiom
 
-• enderman.cape:
-description: Enderman Cape Permission
-
-• energy.cape:
-description: Energie Cape Permission
-
-• fire.cape:
-description: Fire Cape Permission
-
-• red_creeper.cape:
-description: Red Creeper Cape Permission
-
-• turtle.cape:
-description: Turtle Cape Permission
-
-• pickaxe.cape:
-description: Pickaxe Cape Permission
-
-• firework.cape:
-description: Firework Cape Permission
-
-• iron_golem.cape:
-description: Iron-Golem Cape Permission
-
-Have fun with this plugin on your Server!
- 
 # Note
 
 
 • If you have problems open an Issue or contact me on Discord:
-  @SuperStulle007#4539 
+  @'SuperStulle007#7777
+
+Have fun with this plugin on your Server!
+ 
