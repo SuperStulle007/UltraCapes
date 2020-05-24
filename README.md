@@ -26,7 +26,7 @@ Then the new Capes automatically appear in the UI.
 
 # TO DO:
 
-• Nothing to do yet
+• Automatically set cape for players with a specific permission.
 
 
 # Permissions:
