@@ -94,8 +94,8 @@ class Main extends PluginBase implements Listener {
                             $this->openCapesUI($player);
                         }
                 }
+                }
         return true;
-        }
     }
                             
     public function openCapesUI($player) {
