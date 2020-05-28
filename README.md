@@ -31,7 +31,9 @@ Then the new Capes automatically appear in the UI.
 
 # Permissions:
 
-The permissions for each cape is: {capename}.cape.
+To open the Main CapeUI you need the Permission cape.cmd.
+
+The permissions for the single capes is: {capename}.cape.
 
 For example: firework.cape or energy.cape
 
