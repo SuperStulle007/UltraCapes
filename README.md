@@ -28,6 +28,8 @@ Then the new Capes automatically appear in the UI.
 
 • Automatically set cape for players with a specific permission.
 
+• Add a permission for using all Capes
+
 
 # Permissions:
 
