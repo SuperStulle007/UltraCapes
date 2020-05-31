@@ -24,12 +24,13 @@ To add own Capes just put the .png Picture of the Cape in the plugin_data/UltraC
 
 Then the new Capes automatically appear in the UI.
 
+Important!!! The Capes Size must be 64x32 Pixel. (Of the .png file)
+
 # TO DO:
 
 • Automatically set cape for players with a specific permission.
 
 • Add a permission for using all Capes
-
 
 # Permissions:
 
