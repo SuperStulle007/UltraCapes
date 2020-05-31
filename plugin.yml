@@ -13,7 +13,7 @@ commands:
     usage: /cape
 
 permissions:
-  cape.cmd
+  cape.cmd:
     default: op
     description: "Allows to open the Cape UI"
 
