@@ -1,7 +1,11 @@
 # UltraCapes
-Everyone likes Capes. With this Plugin you can add them to your Pocketmine-MP Server! 
-You can choose a Cape by using the command /cape. Then an UI with the Capes you can choose will be opened.
 
+![alt text](https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3a/MINECON_2011_Cape.png/revision/latest/scale-to-width-down/200?cb=20200901084410)
+
+Everyone likes Capes. With this Plugin you can add them to your Pocketmine-MP Server! 
+You can choose a Cape by using the command /cape. Then an UI with the Capes you can choose will be opened!
+
+You can add an unlimited amount of Capes. The Permissions and other settings are explained below!
 
 # Features:
 
