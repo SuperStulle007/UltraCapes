@@ -48,8 +48,7 @@ For example: firework.cape or energy.cape
 # Note
 
 
-• If you have problems open an Issue or contact me on Discord:
-  @'SuperStulle007#7777
+• If you have problems open an Issue.
 
 Have fun with this plugin on your Server!
  
