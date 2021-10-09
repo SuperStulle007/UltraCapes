@@ -4,7 +4,7 @@ author: SuperStulle007
 version: 2.0.0
 description: Wear Capes on your Pocketmine-MP Server!
 main: SuperStulle007\UltraCapes\Main
-api: 3.0.0
+api: 3.18.0
 extensions: [gd]
 
 commands:
