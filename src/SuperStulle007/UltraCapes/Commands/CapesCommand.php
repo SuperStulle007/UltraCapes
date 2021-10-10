@@ -70,6 +70,8 @@ class CapesCommand extends Command implements PluginIdentifiableCommand {
 
             $sender->sendMessage($this->plugin->config->get("ingame"));
 
+
+             return false;
         }
 
         $this->plugin->openCapesUI($sender);
